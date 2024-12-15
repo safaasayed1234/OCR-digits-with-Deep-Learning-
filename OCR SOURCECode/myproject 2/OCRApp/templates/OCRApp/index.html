@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Digit Prediction</title>
+</head>
+<body>
+    <h1>OCR Digit Prediction</h1>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'predict' %}">
+        {% csrf_token %}
+        <label for="image">Upload an Image: </label>
+        <input type="file" name="image" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction >= 0 %}
+        <h2>Predicted Digit: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
+
+
+
